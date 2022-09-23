@@ -4,8 +4,10 @@ from huggingface_stablediffusion import StableDiffusion
 
 def generate(query):
     sd= StableDiffusion()
-    imgs = sd.generate_images(query)
-    sd.quit()
+    try:
+        imgs = sd.generate_images(query)
+    finally:
+        sd.quit()
     return imgs
 
 if __name__ == "__main__":
